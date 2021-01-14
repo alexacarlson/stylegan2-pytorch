@@ -403,6 +403,7 @@ class Trainer():
         self.models_dir = Path(models_dir)
         #self.config_path = self.models_dir / name / '.config.json'
         self.config_path = self.models_dir / '.config.json'
+        print(self.results_dir, self.models_dir)
         
         self.image_size = image_size
         self.network_capacity = network_capacity
@@ -553,7 +554,7 @@ class Trainer():
             self.GAN.reset_parameter_averaging()
 
         # periodically save results
-
+        print(self.steps)
         #if self.steps % 500 == 0:
         if self.steps % 1 == 0:
             print(self.results_dir, self.model_name)
