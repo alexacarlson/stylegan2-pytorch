@@ -1,4 +1,5 @@
-pip install stylegan2_pytorch
+#pip install stylegan2_pytorch
+pip install 
 
 NAME=$1
 INPUT_FOLDER=$2
