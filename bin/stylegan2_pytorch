@@ -43,7 +43,8 @@ def train_from_folder(
         timestamp = now.strftime("%m-%d-%Y_%H-%M-%S")
         samples_name = f'generated-{timestamp}'
         model.evaluate(samples_name, num_image_tiles)
-        print(f'sample images generated at {results_dir}/{name}/{samples_name}')
+        #print(f'sample images generated at {results_dir}/{name}/{samples_name}')
+        print(f'sample images generated at {results_dir}/{samples_name}')
         return
 
     model.set_data_src(data)
