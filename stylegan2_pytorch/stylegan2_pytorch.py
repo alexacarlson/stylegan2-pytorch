@@ -401,8 +401,9 @@ class Trainer():
         self.name = name
         self.results_dir = Path(results_dir)
         self.models_dir = Path(models_dir)
-        self.config_path = self.models_dir / name / '.config.json'
-
+        #self.config_path = self.models_dir / name / '.config.json'
+        self.config_path = self.models_dir / '.config.json'
+        
         self.image_size = image_size
         self.network_capacity = network_capacity
 
@@ -586,13 +587,15 @@ class Trainer():
         # regular
 
         generated_images = generate_images(self.GAN.S, self.GAN.G, latents, n)
-        torchvision.utils.save_image(generated_images, str(self.results_dir / self.name / f'{str(num)}.jpg'), nrow=num_rows)
+        #torchvision.utils.save_image(generated_images, str(self.results_dir / self.name / f'{str(num)}.jpg'), nrow=num_rows)
+        torchvision.utils.save_image(generated_images, str(self.results_dir / f'{str(num)}.jpg'), nrow=num_rows)
         
         # moving averages
 
         generated_images = generate_images(self.GAN.SE, self.GAN.GE, latents, n)
-        torchvision.utils.save_image(generated_images, str(self.results_dir / self.name / f'{str(num)}-ema.jpg'), nrow=num_rows)
-
+        #torchvision.utils.save_image(generated_images, str(self.results_dir / self.name / f'{str(num)}-ema.jpg'), nrow=num_rows)
+        torchvision.utils.save_image(generated_images, str(self.results_dir / f'{str(num)}-ema.jpg'), nrow=num_rows)
+        
         # mixing regularities
 
         def tile(a, dim, n_tile):
@@ -641,7 +644,8 @@ class Trainer():
         print(f'G: {self.g_loss:.2f} | D: {self.d_loss:.2f} | GP: {self.last_gp_loss:.2f} | PL: {self.pl_mean:.2f}')
 
     def model_name(self, num):
-        return str(self.models_dir / self.name / f'model_{num}.pt')
+        #return str(self.models_dir / self.name / f'model_{num}.pt')
+        return str(self.models_dir / f'model_{num}.pt')
 
     def init_folders(self):
         (self.results_dir / self.name).mkdir(parents=True, exist_ok=True)
