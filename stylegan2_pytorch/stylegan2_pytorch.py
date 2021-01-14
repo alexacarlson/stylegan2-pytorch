@@ -554,10 +554,13 @@ class Trainer():
 
         # periodically save results
 
-        if self.steps % 500 == 0:
+        #if self.steps % 500 == 0:
+        if self.steps % 1 == 0:
+            print(self.results_dir, self.model_name)
             self.save(floor(self.steps / SAVE_EVERY))
 
-        if self.steps % 1000 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
+        #if self.steps % 1000 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
+        if self.steps % 1 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
             self.evaluate(floor(self.steps / 1000))
 
         self.steps += 1
