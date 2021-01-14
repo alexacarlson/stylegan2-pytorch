@@ -10,9 +10,9 @@ BATCH_SIZE=$6
 
 echo ${INPUT_FOLDER} ${NAME} ${RESULT_DIR} ${MODEL_DIR} ${IMAGE_SIZE} ${BATCH_SIZE} 
 
-stylegan2_pytorch --data ${INPUT_FOLDER} \
-                  --name ${NAME} \ 
-                  --results_dir ${RESULT_DIR} \
-                  --models_dir ${MODEL_DIR} \
-                  --image-size ${IMAGE_SIZE} \
-                  --batch-size ${BATCH_SIZE} 
+stylegan2_pytorch --data=${INPUT_FOLDER} \
+                  --name=${NAME} \ 
+                  --results_dir=${RESULT_DIR} \
+                  --models_dir=${MODEL_DIR} \
+                  --image-size=${IMAGE_SIZE} \
+                  --batch-size=${BATCH_SIZE} 
