@@ -563,7 +563,7 @@ class Trainer():
 
         #if self.steps % 1000 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
         if self.steps % 1 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
-            print('Evaluating)
+            print('Evaluating')
             self.evaluate(floor(self.steps / 1000))
 
         self.steps += 1
