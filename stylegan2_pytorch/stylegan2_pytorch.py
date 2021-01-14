@@ -403,7 +403,8 @@ class Trainer():
         self.models_dir = Path(models_dir)
         #self.config_path = self.models_dir / name / '.config.json'
         self.config_path = self.models_dir / '.config.json'
-        print(self.results_dir, self.models_dir)
+        print(self.results_dir)
+        print(self.models_dir)
         
         self.image_size = image_size
         self.network_capacity = network_capacity
@@ -554,14 +555,15 @@ class Trainer():
             self.GAN.reset_parameter_averaging()
 
         # periodically save results
-        print(self.steps)
+        
         #if self.steps % 500 == 0:
         if self.steps % 1 == 0:
-            print(self.results_dir, self.model_name)
+            print(self.results_dir, self.models_dir)
             self.save(floor(self.steps / SAVE_EVERY))
 
         #if self.steps % 1000 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
         if self.steps % 1 == 0 or (self.steps % 100 == 0 and self.steps < 2500):
+            print('Evaluating)
             self.evaluate(floor(self.steps / 1000))
 
         self.steps += 1
@@ -593,12 +595,14 @@ class Trainer():
         generated_images = generate_images(self.GAN.S, self.GAN.G, latents, n)
         #torchvision.utils.save_image(generated_images, str(self.results_dir / self.name / f'{str(num)}.jpg'), nrow=num_rows)
         torchvision.utils.save_image(generated_images, str(self.results_dir / f'{str(num)}.jpg'), nrow=num_rows)
-        
+        print('Saving intermediate images') 
+                  
         # moving averages
 
         generated_images = generate_images(self.GAN.SE, self.GAN.GE, latents, n)
         #torchvision.utils.save_image(generated_images, str(self.results_dir / self.name / f'{str(num)}-ema.jpg'), nrow=num_rows)
         torchvision.utils.save_image(generated_images, str(self.results_dir / f'{str(num)}-ema.jpg'), nrow=num_rows)
+        print('Saving intermediate images')         
         
         # mixing regularities
 
