@@ -1,5 +1,5 @@
 #pip install stylegan2_pytorch
-pip install 
+pip install https://github.com/alexacarlson/stylegan2-pytorch.zip
 
 NAME=$1
 INPUT_FOLDER=$2
